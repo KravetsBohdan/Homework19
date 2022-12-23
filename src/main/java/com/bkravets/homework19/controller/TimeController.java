@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 @RestController
 public class TimeController {
 
-    @GetMapping("time")
+    @GetMapping("/time")
     public String getTime() {
         return LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
