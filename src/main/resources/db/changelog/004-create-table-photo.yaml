@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: bohdan
+      changes:
+        - createTable:
+            schemaName: nix
+            tableName: photo
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    unique: true
+                    nullable: false
+              - column:
+                  name: url
+                  type: text
+              - column:
+                  name: student_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_student_photo
+                    references: nix.student(id)
