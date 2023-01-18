@@ -11,3 +11,12 @@ databaseChangeLog:
   - include:
       file: 004-create-table-photo.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 005-add-autoincrement-to-id-student.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 006-add-autoincrement-to-id-photo.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 007-add-description-column-to-photo.yaml
+      relativeToChangelogFile: true
