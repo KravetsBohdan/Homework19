@@ -1,13 +1,36 @@
 package com.bkravets.homework19;
 
+import com.bkravets.homework19.service.PhotoService;
+import com.bkravets.homework19.service.StudentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
+@RequiredArgsConstructor
 @SpringBootApplication
 public class Homework19Application {
+    private final StudentService studentService;
+    private final PhotoService photoService;
 
     public static void main(String[] args) {
         SpringApplication.run(Homework19Application.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+        return args -> {
+
+            studentService.createStudent("Mark", "mark1234@gmail.com");
+
+            photoService.addPhotoToStudent(1, "selfie", "photo/selfie.jpg");
+            photoService.addPhotoToStudent(1, "sea", "photo/sea.jpg");
+
+            photoService.getPhotoByDescription("selfie").forEach(System.out::println);
+        };
     }
 
 }
