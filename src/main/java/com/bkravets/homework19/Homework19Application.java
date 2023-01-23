@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
 @RequiredArgsConstructor
 @SpringBootApplication
 public class Homework19Application {
@@ -29,7 +28,7 @@ public class Homework19Application {
             photoService.addPhotoToStudent(1, "selfie", "photo/selfie.jpg");
             photoService.addPhotoToStudent(1, "sea", "photo/sea.jpg");
 
-            photoService.getPhotoByDescription("selfie").forEach(System.out::println);
+            photoService.getPhotosByDescription("selfie").forEach(System.out::println);
         };
     }
 

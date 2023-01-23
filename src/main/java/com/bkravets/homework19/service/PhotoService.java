@@ -28,7 +28,7 @@ public class PhotoService {
         photoRepository.save(photo);
     }
 
-    public List<Photo> getPhotoByDescription(String description) {
-       return photoRepository.findPhotoByDescription(description);
+    public List<Photo> getPhotosByDescription(String description) {
+       return photoRepository.findPhotosByDescription(description);
     }
 }
