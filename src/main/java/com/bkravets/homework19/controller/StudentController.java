@@ -5,15 +5,17 @@ import com.bkravets.homework19.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/students")
+@RestController
+@RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping
+    @GetMapping("/time")
     public List<Student> getStudents() {
        return studentService.getStudents();
     }
