@@ -1,5 +1,6 @@
 package com.bkravets.homework19.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,5 +26,6 @@ public class Student {
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     @ToString.Exclude
+    @JsonIgnore
     private List<Photo> photos;
 }
