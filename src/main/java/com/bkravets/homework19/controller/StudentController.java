@@ -15,7 +15,7 @@ import java.util.List;
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping("/time")
+    @GetMapping
     public List<Student> getStudents() {
        return studentService.getStudents();
     }
