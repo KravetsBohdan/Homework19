@@ -5,6 +5,8 @@ import com.bkravets.homework19.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class StudentService {
@@ -18,6 +20,10 @@ public class StudentService {
         student.setEmail(email);
 
         studentRepository.save(student);
+    }
+
+    public List<Student> getStudents() {
+        return studentRepository.findAll();
     }
 
 }
