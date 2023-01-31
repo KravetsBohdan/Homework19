@@ -22,12 +22,6 @@ public class Homework19Application {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-
-            studentService.createStudent("Mark", "mark1234@gmail.com");
-
-            photoService.addPhotoToStudent(1, "selfie", "photo/selfie.jpg");
-            photoService.addPhotoToStudent(1, "sea", "photo/sea.jpg");
-
             photoService.getPhotosByDescription("selfie").forEach(System.out::println);
         };
     }
