@@ -1,6 +1,6 @@
 package com.bkravets.homework19.mapper;
 
-import com.bkravets.homework19.dto.StudentDTO;
+import com.bkravets.homework19.dto.StudentDto;
 import com.bkravets.homework19.entity.Student;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -9,8 +9,8 @@ import org.mapstruct.factory.Mappers;
 public interface StudentMapper {
     StudentMapper INSTANCE = Mappers.getMapper(StudentMapper.class);
 
-    StudentDTO toStudentDTO(Student student);
+    StudentDto toStudentDTO(Student student);
 
 
-    Student toStudent(StudentDTO studentDTO);
+    Student toStudent(StudentDto studentDTO);
 }
