@@ -2,6 +2,8 @@ package com.bkravets.homework19;
 
 import com.bkravets.homework19.service.PhotoService;
 import com.bkravets.homework19.service.StudentService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.servers.Server;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,9 @@ import org.springframework.context.annotation.Bean;
 
 @RequiredArgsConstructor
 @SpringBootApplication
+@OpenAPIDefinition(
+        servers = @Server(url = "/")
+)
 public class Homework19Application {
     private final StudentService studentService;
     private final PhotoService photoService;
@@ -22,12 +27,6 @@ public class Homework19Application {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-
-            studentService.createStudent("Mark", "mark1234@gmail.com");
-
-            photoService.addPhotoToStudent(1, "selfie", "photo/selfie.jpg");
-            photoService.addPhotoToStudent(1, "sea", "photo/sea.jpg");
-
             photoService.getPhotosByDescription("selfie").forEach(System.out::println);
         };
     }
