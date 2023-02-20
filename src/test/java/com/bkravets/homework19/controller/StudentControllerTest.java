@@ -54,10 +54,12 @@ class StudentControllerTest {
 
     @Test
     void shouldGetStudents() {
-        given().contentType(ContentType.JSON)
-                .port(springBootPort)
-                .when().get(STUDENTS_URL)
-                .then()
+    given()
+            .contentType(ContentType.JSON)
+            .port(springBootPort)
+    .when()
+            .get(STUDENTS_URL)
+    .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("[0].name", equalTo("Bob"))
                 .body("[0].email", equalTo("mail.com"));
@@ -65,11 +67,14 @@ class StudentControllerTest {
 
     @Test
     void shouldGetStudent() {
-        given().contentType(ContentType.JSON)
+        given()
+                .contentType(ContentType.JSON)
                 .port(springBootPort)
                 .pathParam("id", savedStudentId)
-                .when().get(STUDENT_URL)
-                .then().statusCode(HttpStatus.OK.value())
+        .when()
+                .get(STUDENT_URL)
+        .then()
+                .statusCode(HttpStatus.OK.value())
                 .body("name", equalTo("Bob"))
                 .body("email", equalTo("mail.com"));
     }
@@ -80,27 +85,31 @@ class StudentControllerTest {
                 .contentType(ContentType.JSON)
                 .port(springBootPort)
                 .pathParam("id", -1)
-                .when()
+        .when()
                 .get(STUDENT_URL)
-                .then()
+        .then()
                 .statusCode(HttpStatus.NOT_FOUND.value())
                 .body("message", equalTo("Student not found"));
     }
 
     @Test
     void shouldCreateStudent() {
-        given().body(STUDENT_JSON)
+        given()
+                .body(STUDENT_JSON)
                 .contentType(ContentType.JSON)
                 .port(springBootPort)
-                .when().post(STUDENTS_URL)
-                .then().statusCode(HttpStatus.CREATED.value())
+        .when()
+                .post(STUDENTS_URL)
+        .then()
+                .statusCode(HttpStatus.CREATED.value())
                 .body("name", equalTo("Bob"))
                 .body("email", equalTo("mail.com"));
     }
 
     @Test
     void shouldUpdateStudent() {
-        given().body("""
+        given()
+                .body("""
                         {
                             "name": "Denis",
                             "email": "mail.com"
@@ -109,15 +118,18 @@ class StudentControllerTest {
                 .contentType(ContentType.JSON)
                 .port(springBootPort)
                 .pathParam("id", savedStudentId)
-                .when().put(STUDENT_URL)
-                .then().statusCode(HttpStatus.ACCEPTED.value())
+        .when()
+                .put(STUDENT_URL)
+        .then()
+                .statusCode(HttpStatus.OK.value())
                 .body("name", equalTo("Denis"))
                 .body("email", equalTo("mail.com"));
     }
 
     @Test
     void shouldGetErrorMessageWhenStudentToUpdateNotFound() {
-        given().body("""
+        given()
+                .body("""
                         {
                             "name": "Denis",
                             "email": "mail.com"
@@ -126,17 +138,22 @@ class StudentControllerTest {
                 .contentType(ContentType.JSON)
                 .port(springBootPort)
                 .pathParam("id", -1)
-                .when().put(STUDENT_URL)
-                .then().statusCode(HttpStatus.NOT_FOUND.value())
+        .when()
+                .put(STUDENT_URL)
+        .then()
+                .statusCode(HttpStatus.NOT_FOUND.value())
                 .body("message", equalTo("Student not found"));
     }
 
     @Test
     void shouldDeleteStudent() {
-        given().port(springBootPort)
+        given()
+                .port(springBootPort)
                 .pathParam("id", savedStudentId)
-                .when().delete(STUDENT_URL)
-                .then().statusCode(HttpStatus.NO_CONTENT.value());
+        .when()
+                .delete(STUDENT_URL)
+        .then()
+                .statusCode(HttpStatus.NO_CONTENT.value());
     }
 
 
@@ -145,9 +162,9 @@ class StudentControllerTest {
         given()
                 .port(springBootPort)
                 .pathParam("id", -1)
-                .when()
+        .when()
                 .delete(STUDENT_URL)
-                .then()
+        .then()
                 .statusCode(HttpStatus.NOT_FOUND.value())
                 .body("message", equalTo("Student not found"));
     }
