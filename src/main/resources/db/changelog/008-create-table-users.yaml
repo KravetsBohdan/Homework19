@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: bohdan
+      changes:
+        - createTable:
+            schemaName: nix
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: first_name
+                  type: text
+              - column:
+                  name: last_name
+                  type: text
+              - column:
+                  name: email
+                  type: text
+              - column:
+                  name: password
+                  type: text
